@@ -14,6 +14,35 @@ class Test(TestCase):
     def test_002(self):
         Kurly_Create_ReviewAvailable.purchase()
 
+    def test_003(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_004(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_005(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_006(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_007(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_008(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_009(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    def test_010(self):
+        Kurly_Create_ReviewAvailable.purchase()
+
+    @classmethod
+    def tearDownClass(cls):
+        login.create_driver.driver.quit()
+
+
 
 if __name__ == '__main__':
     unittest.main()

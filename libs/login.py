@@ -6,6 +6,23 @@ from libs import create_driver
 
 # 쇼핑몰 로그인
 def login():
+    url = 'https://lacms2.stg.kurlycorp.kr/signin'
+    create_driver.driver.get(url)
+
+    # id inputbox 있는지 확인
+    WebDriverWait(create_driver.driver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
+
+    # 아이디/비밀번호 입력
+    create_driver.driver.find_element(by=By.NAME,
+                                      value='username').send_keys('byungwook.lee@kurlycorp.com')
+    create_driver.driver.find_element(by=By.NAME,
+                                      value='password').send_keys('quddnr414@')
+
+    # 로그인 버튼 클릭
+    create_driver.driver.find_element(by=By.XPATH,
+                                      value='//*[@id="root"]/div/form/button').click()
+
+
     url = 'https://www.stg.kurly.com/member/login'
     create_driver.driver.get(url)
 
@@ -30,9 +47,9 @@ def login():
 
     # 아이디/비밀번호 입력
     create_driver.driver.find_element(by=By.NAME,
-                                      value='id').send_keys('qatest12')
+                                      value='id').send_keys('qatest10')
     create_driver.driver.find_element(by=By.NAME,
-                                      value='password').send_keys('1q2w3e4r!!')
+                                      value='password').send_keys('testtest00')
 
     # 로그인 버튼 클릭
     create_driver.driver.find_element(by=By.XPATH,

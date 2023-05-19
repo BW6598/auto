@@ -23,8 +23,8 @@ def purchase():
     #
     # create_driver.driver.find_element(By.id, 'gnb_search').send_keys(randomPrice)
     # time.sleep(2)
-
-    url = 'https://www.stg.kurly.com/goods/1000051603'
+    randomProduct = ['1000051603','1000046942','1000051608']
+    url = 'https://www.stg.kurly.com/goods/' + random.choice(randomProduct)
     create_driver.driver.get(url)
 
     # 장바구니 버튼 있는지 확인
@@ -46,18 +46,19 @@ def purchase():
     create_driver.driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div[2]/div[2]/div/div[3]/button').click()
     time.sleep(2)
 
-    # 적립금 inputbox 있는지 확인
-    WebDriverWait(create_driver.driver, 10).until(
-        EC.presence_of_element_located((By.NAME, 'point-usage')))
-
+    # 적립금 inputbox 클릭
     create_driver.driver.find_element(By.NAME, 'point-usage').click()
     time.sleep(2)
 
     # 적립금 [모두사용] 버튼 클릭
     create_driver.driver.find_element(By.XPATH, '//*[@id="__next"]/div[2]/div/div/div[7]/div[1]/div[6]/div/div[1]/button').click()
+    time.sleep(1)
+    create_driver.driver.find_element(By.XPATH,
+                                      '//*[@id="__next"]/div[2]/div/div/div[7]/div[1]/div[6]/div/div[1]/button').send_keys(Keys.PAGE_DOWN)
+    time.sleep(1)
 
     # [결제하기] 버튼 클릭
-    create_driver.driver.find_element(By.XPATH, '//*[@id="__next"]/div[2]/div/div/div[7]/div[1]/div[11]/button').click()
+    create_driver.driver.find_element(By.XPATH, '//*[@id="__next"]/div[2]/div/div/div[7]/div[1]/div[9]/button/span').click()
     time.sleep(2)
 
     # 주문 되었는지 확인
@@ -71,18 +72,6 @@ def purchase():
     url = 'https://lacms2.stg.kurlycorp.kr/signin'
     create_driver.driver.get(url)
 
-    # id inputbox 있는지 확인
-    WebDriverWait(create_driver.driver, 10).until(EC.presence_of_element_located((By.ID,'username')))
-
-    # 아이디/비밀번호 입력
-    create_driver.driver.find_element(by=By.NAME,
-                                      value='username').send_keys('byungwook.lee@kurlycorp.com')
-    create_driver.driver.find_element(by=By.NAME,
-                                      value='password').send_keys('quddnr414@')
-
-    # 로그인 버튼 클릭
-    create_driver.driver.find_element(by=By.XPATH,
-                                      value='//*[@id="root"]/div/form/button').click()
 
     # 주문 > 주문리스트 클릭
     WebDriverWait(create_driver.driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="nav"]/div[4]/div/span')))
