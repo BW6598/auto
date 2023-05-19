@@ -10,5 +10,6 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
 options.add_argument("--start-maximized")  # 전체화면 옵션
+options.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)

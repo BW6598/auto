@@ -49,7 +49,9 @@ def purchase():
     # 적립금 inputbox 있는지 확인
     WebDriverWait(create_driver.driver, 10).until(
         EC.presence_of_element_located((By.NAME, 'point-usage')))
-    time.sleep(1)
+
+    create_driver.driver.find_element(By.NAME, 'point-usage').click()
+    time.sleep(2)
 
     # 적립금 [모두사용] 버튼 클릭
     create_driver.driver.find_element(By.XPATH, '//*[@id="__next"]/div[2]/div/div/div[7]/div[1]/div[6]/div/div[1]/button').click()
